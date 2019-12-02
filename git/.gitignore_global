@@ -1,8 +1,12 @@
+### PERSONAL ###
+.zshrc.local
+.aws/
 lumen_ide_helper.php
 .phpstorm.meta.php
 .php_cs.cache
 .env.example
 storage/
+zsh_custom/
 
 ### OSX ###
 .DS_Store

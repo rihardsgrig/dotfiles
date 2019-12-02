@@ -1,0 +1,53 @@
+#! /usr/bin/env sh
+
+# Git
+alias gs="git status"
+alias gl="git log  --oneline --decorate --color"
+alias gaa="git add ."
+alias gamend="git commit --amend --no-edit"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+alias gcf='git config --list'
+alias nah="git reset --hard && git clean -df"
+alias gf="git fetch --all"
+alias gd="git diff"
+alias gcm="git commit -m"
+alias gmom='git merge origin/master'
+alias grbi='git rebase -i'
+alias grh='git reset HEAD'
+alias gru='git reset --'
+alias glol="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias gp='git pull'
+alias gpull='git pull origin $(git_current_branch)'
+alias gpush='git push origin $(git_current_branch)'
+alias gnuke="git clean -df && git reset --hard"
+
+# Job
+alias code="cd ~/kasko"
+alias cdd='cd ~/kasko'
+
+# Utils
+alias cl="clear"
+alias ../="cd ../"
+alias .../="cd ../../"
+alias copy_ssh="more $HOME/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to pasteboard.\n'"
+alias flush_dns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias localip="ipconfig getifaddr en0"
+alias reloadcli="source $HOME/.zshrc"
+alias dotfiles="cd $DOTFILES"
+alias dwnl="cd $HOME/Downloads"
+alias dskt="cd $HOME/Desktop"
+alias ls="ls -F"
+alias ll="/usr/local/opt/coreutils/libexec/gnubin/ls -ahlF --color --group-directories-first"
+# List all files colorized in long format
+alias l="ls -lF --color"
+# List all files colorized in long format, including dot files
+alias la="ls -laF --color"
+# List only directories
+alias lsd="ls -lF -color | grep --color=never '^d'"
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# Apps
+alias update='brew update; brew outdated; brew upgrade; brew cleanup; mas upgrade'
+alias phpstorm='open -a "/Users/rihardsgrigorjevs/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/193.5233.101/PhpStorm.app/Contents/MacOS/phpstorm" "$@"'

@@ -10,26 +10,27 @@ sudo -v
 # ###########################################################
 # install homebrew (CLI Packages)
 # ###########################################################
-info "checking homebrew..."
+info "Checking homebrew..."
 brew_bin=$(which brew) 2>&1 > /dev/null
 if [[ $? != 0 ]]; then
-  substep_info "installing homebrew"
+  substep_info "Installing homebrew."
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   if [[ $? != 0 ]]; then
-    error "unable to install homebrew, script $0 abort!"
+    error "Unable to install homebrew, script $0 abort!"
     exit 2
   fi
 else
-  read -r -p "run brew update && upgrade? [y|N] " response
+  substep_info "Homebrew allready installed."
+  read -r -p "Run brew update && upgrade? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]]; then
-    substep_info "updating homebrew..."
+    substep_info "Updating homebrew..."
     brew update
-    success "homebrew updated"
-    substep_info "upgrading brew packages..."
+    success "Homebrew updated."
+    substep_info "Upgrading brew packages..."
     brew upgrade
-    success "brews upgraded"
+    success "Brews upgraded"
   else
-    info "skipped brew package upgrades."
+    info "Skipped brew package upgrades."
   fi
 fi
 
@@ -40,3 +41,8 @@ brew doctor
 info "Installing Brewfile packages..."
 brew bundle
 success "Finished installing Brewfile packages."
+
+info "Cleaning up homebrew..."
+brew cleanup --force > /dev/null 2>&1
+rm -f -r /Library/Caches/Homebrew/* > /dev/null 2>&1
+success "Clean up finished."

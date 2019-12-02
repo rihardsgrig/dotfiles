@@ -41,8 +41,16 @@ fi
 # Package control must be executed first in order for the rest to work
 ./packages/setup.sh
 
-find * -name "setup.sh" -not -wholename "packages*" | while read setup; do
+find * -name "setup.sh" -not -wholename "packages*" -not -wholename "zsh_custom*" | while read setup; do
     ./$setup
 done
 
-success "Finished installing Dotfiles"
+read -r -p "Do you want to update the system configurations? [y|N] " response
+if [[ $response =~ (y|yes|Y) ]]; then
+  ./macos/apply_settings.sh
+  success "OS X settings updated! You may need to restart."
+else
+    info "Skipped OS X settings update."
+fi 
+
+success "Finished installing Dotfiles."
