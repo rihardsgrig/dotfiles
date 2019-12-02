@@ -1,0 +1,5 @@
+[user]
+	name = Rihards Grigorjevs
+    email = rihards.grigorjevs@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global

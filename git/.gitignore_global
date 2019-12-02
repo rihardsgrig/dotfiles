@@ -1,0 +1,45 @@
+lumen_ide_helper.php
+.phpstorm.meta.php
+.php_cs.cache
+.env.example
+storage/
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+### Intellij ###
+.idea/
+
+## Plugin-specific files:
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+## Build generated
+build/
