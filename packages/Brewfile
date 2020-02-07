@@ -35,6 +35,7 @@ brew 'php'
 brew 'aws'
 brew 'composer'
 brew 'vault'
+brew 'jq'
 
 cask 'appcleaner'
 cask 'authy'

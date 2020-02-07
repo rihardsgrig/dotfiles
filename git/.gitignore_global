@@ -7,6 +7,7 @@ lumen_ide_helper.php
 .env.example
 storage/
 zsh_custom/
+.env.local
 
 ### OSX ###
 .DS_Store
