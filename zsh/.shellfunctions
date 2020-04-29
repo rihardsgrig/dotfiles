@@ -39,3 +39,5 @@ s() {
 }
 
 homestead() {( cd ~/Homestead && vagrant "$@" );}
+
+allapps() {(find / -iname '*.app' > "${1:-~/Desktop/allapps.txt}" );}

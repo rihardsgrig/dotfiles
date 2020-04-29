@@ -21,6 +21,7 @@ alias gp='git pull'
 alias gpull='git pull origin $(git_current_branch)'
 alias gpush='git push origin $(git_current_branch)'
 alias gnuke="git clean -df && git reset --hard"
+alias code-changes="!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
 # Job
 alias code="cd ~/kasko"
