@@ -61,6 +61,7 @@ cask 'tableplus'
 cask 'tunnelblick'
 cask 'vagrant'
 cask 'vagrant-manager'
+cack 'typora'
 #cask 'virtualbox' #check why not working
 cask 'vlc'
 cask 'xld'
