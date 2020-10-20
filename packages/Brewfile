@@ -36,6 +36,7 @@ brew 'aws'
 brew 'composer'
 brew 'vault'
 brew 'jq'
+brew 'fswatch'
 
 cask 'appcleaner'
 cask 'authy'
