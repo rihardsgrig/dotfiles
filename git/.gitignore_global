@@ -8,6 +8,7 @@ lumen_ide_helper.php
 storage/
 zsh_custom/
 .env.local
+git-sync
 
 ### OSX ###
 .DS_Store
