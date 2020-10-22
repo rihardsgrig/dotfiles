@@ -21,7 +21,7 @@ alias gp='git pull'
 alias gpull='git pull origin $(git_current_branch)'
 alias gpush='git push origin $(git_current_branch)'
 alias gnuke="git clean -df && git reset --hard"
-alias code-changes="!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
+alias code-changes="git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
 # Job
 alias code="cd ~/kasko"
@@ -51,4 +51,4 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Apps
 alias update='brew update; brew outdated; brew upgrade; brew cleanup; mas upgrade'
-alias phpstorm='open -a "/Users/rihardsgrigorjevs/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/193.5233.101/PhpStorm.app/Contents/MacOS/phpstorm" "$@"'
+alias phpstorm='open -a "/Users/rihardsgrigorjevs/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/201.8538.41/PhpStorm.app/Contents/MacOS/phpstorm" "$@"'

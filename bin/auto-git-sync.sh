@@ -1,0 +1,89 @@
+#! /usr/bin/env sh
+
+set -e
+
+stderr () {
+    echo "$1" >&2
+}
+
+is_command() {
+    command -v "$1" &>/dev/null
+}
+
+# clean up at end of program, killing the remaining sleep process if it still exists
+cleanup () {
+    if [[ -n "$SLEEP_PID" ]] && kill -0 "$SLEEP_PID" &>/dev/null; then
+        kill "$SLEEP_PID" &>/dev/null
+    fi
+    exit 0
+}
+
+for cmd in "git" "fswatch" "git-sync" "greadlink"; do
+    is_command "$cmd" || { stderr "Error: Required command '$cmd' not found"; exit 1; }
+done
+unset cmd
+
+###############################################################################
+
+SLEEP_TIME=2
+SLEEP_PID="" # pid of timeout subprocess
+trap "cleanup" EXIT # make sure the timeout is killed when exiting script
+
+IN=$(greadlink -f "$1")
+
+if [ -d "$1" ]; then # if the target is a directory
+
+    TARGETDIR=$(sed -e "s/\/*$//" <<<"$IN") # dir to CD into before using git commands: trim trailing slash, if any
+    # default events specified via a mask, see
+    # https://emcrisostomo.github.io/fswatch/doc/1.14.0/fswatch.html/Invoking-fswatch.html#Numeric-Event-Flags
+    # default of 414 = MovedTo + MovedFrom + Renamed + Removed + Updated + Created
+    #                = 256 + 128+ 16 + 8 + 4 + 2  
+    IN_ARGS=("--recursive" "--event=414" "--exclude" "'(\.git/|\.git$)'" "\"$TARGETDIR\"")
+
+elif [ -f "$1" ]; then # if the target is a single file
+
+    TARGETDIR=$(dirname "$IN") # dir to CD into before using git commands: extract from file name
+    IN_ARGS=("--event=414" "$IN")
+
+else
+    stderr "Error: The target is neither a regular file nor a directory."
+    exit 1
+fi
+
+# CD into right dir
+cd "$TARGETDIR" || { stderr "Error: Can't change directory to '${TARGETDIR}'." ; exit 1; }
+
+###############################################################################
+
+echo "fswatch" "${IN_ARGS[@]}"
+
+#   main program loop: wait for changes and commit them
+#   whenever fswatch reports a change, we spawn a timer (sleep process) that gives the writing
+#   process some time (in case there are a lot of changes or w/e); if there is already a timer
+#   running when we receive an event, we kill it and start a new one; thus we only commit if there
+#   have been no changes reported during a whole timeout period
+
+eval "fswatch" "${IN_ARGS[@]}" | while read -r line; do
+    # is there already a timeout process running?
+    if [[ -n "$SLEEP_PID" ]] && kill -0 $SLEEP_PID &>/dev/null; then
+        # kill it and wait for completion
+        kill $SLEEP_PID &>/dev/null || true
+        wait $SLEEP_PID &>/dev/null || true
+    fi
+
+    # start timeout process
+    (
+        sleep "$SLEEP_TIME" # wait some more seconds to give apps time to write out all changes
+
+        # CD into right dir
+        cd "$TARGETDIR" || { stderr "Error: Can't change directory to '${TARGETDIR}'." ; exit 1; }
+        STATUS=$(git status -s)
+        if [ -n "$STATUS" ]; then # only call git-sync if status shows tracked changes.
+            
+            git-sync
+
+        fi
+    ) & # and send into background
+
+    SLEEP_PID=$! # and remember its PID
+done
