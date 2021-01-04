@@ -12,4 +12,4 @@
 
 - [ ] notify if git-sync script fails
 
-- [ ] repo script parse file name, create directories (aaa.bbb.ccc.list), clone repos and if repo marked as sync repo setup git-sync `git@github.com:rihardsgrig/some-repo.git some-repo sync`. Don't store in `~/code/`.
+- [ ] repo script to parse file name, create directories based on file name (aaa.bbb.ccc.list), clone repos and if repo marked as sync repo setup git-sync `git@github.com:rihardsgrig/some-repo.git some-repo sync`. Don't store in `~/code/`.
