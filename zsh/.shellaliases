@@ -51,4 +51,4 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Apps
 alias update='brew update; brew outdated; brew upgrade; brew cleanup; mas upgrade'
-alias phpstorm='open -a "/Users/rihardsgrigorjevs/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/201.8538.41/PhpStorm.app/Contents/MacOS/phpstorm" "$@"'
+#alias phpstorm='open -a "/Users/rihardsgrigorjevs/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/211.6693.120/PhpStorm.app/Contents/MacOS/phpstorm" "$@"'
