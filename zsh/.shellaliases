@@ -38,6 +38,7 @@ alias reloadcli="source $HOME/.zshrc"
 alias dotfiles="cd $DOTFILES"
 alias dwnl="cd $HOME/Downloads"
 alias dskt="cd $HOME/Desktop"
+alias dcmnt="cd $HOME/Documents"
 alias ls="ls -F"
 alias ll="/usr/local/opt/coreutils/libexec/gnubin/ls -ahlF --color --group-directories-first"
 # List all files colorized in long format
@@ -51,4 +52,4 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Apps
 alias update='brew update; brew outdated; brew upgrade; brew cleanup; mas upgrade'
-#alias phpstorm='open -a "/Users/rihardsgrigorjevs/Library/Application Support/JetBrains/Toolbox/apps/PhpStorm/ch-0/211.6693.120/PhpStorm.app/Contents/MacOS/phpstorm" "$@"'
+alias phpstorm='. $DOTFILES/bin/phpstorm'
