@@ -5,7 +5,7 @@ tap 'buo/cask-upgrade'
 tap 'heroku/brew'
 
 #Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew 'aws'
+brew 'awscli'
 brew 'circleci'
 brew 'composer'
 brew 'coreutils'
