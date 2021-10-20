@@ -22,6 +22,7 @@ alias gpull='git pull origin $(git_current_branch)'
 alias gpush='git push origin $(git_current_branch)'
 alias gnuke="git clean -df && git reset --hard"
 alias code-changes="git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
+alias gbD="git branch | grep -v "master" >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -D </tmp/merged-branches"
 
 # Job
 alias code="cd ~/kasko"
