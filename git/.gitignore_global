@@ -9,6 +9,7 @@ storage/
 zsh_custom/
 .env.local
 git-sync
+sphp
 phpstorm
 
 ### OSX ###

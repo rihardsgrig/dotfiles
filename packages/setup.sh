@@ -46,3 +46,38 @@ info "Cleaning up homebrew..."
 brew cleanup --force > /dev/null 2>&1
 rm -f -r /Library/Caches/Homebrew/* > /dev/null 2>&1
 success "Clean up finished."
+
+info "Installing PHP..."
+versions=(php@7.4 php@8.0 php@8.1)
+brew install ${versions[@]}
+success "PHP install finished."
+
+# https://gist.github.com/rhukster/f4c04f1bf59e0b74e335ee5d186a98e2/
+info "Installing PHP switch script..."
+
+SCRIPT_LOC="$HOME/.dotfiles/bin"
+SCRIPT_NAME="sphp"
+SCRIPT_PATH="${SCRIPT_LOC}/${SCRIPT_NAME}"
+SCRIPT_PATH_TMP="$SCRIPT_PATH.bck"
+SCRIPT_URL="https://gist.githubusercontent.com/rhukster/f4c04f1bf59e0b74e335ee5d186a98e2/raw"
+#sphp 7.4 sphp 8.0 sphp 8.1
+
+
+if [[ -a "$SCRIPT_PATH" ]]; then
+  substep_info "You already have sphp installed. Removing $SCRIPT_PATH older version."
+  rm -rf $SCRIPT_PATH
+fi
+
+# download sphp
+substep_info "Fetching script..."
+mkdir -p $SCRIPT_LOC
+curl -sL $SCRIPT_URL > $SCRIPT_PATH_TMP && substep_info "Saved to ${SCRIPT_PATH_TMP}."
+
+substep_info "Disabling apache in the script..."
+sed 's/apache_change=1/apache_change=0/gi' $SCRIPT_PATH_TMP > $SCRIPT_PATH
+chmod +x $SCRIPT_PATH
+rm -rf $SCRIPT_PATH_TMP
+
+success "sphp is set up."
+
+

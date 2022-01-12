@@ -5,5 +5,12 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
-export PATH="/usr/local/opt/php@7.4/bin:$PATH"
-export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
+# export PATH="/usr/local/opt/php@8.1/bin:$PATH"
+# export PATH="/usr/local/opt/php@8.1/sbin:$PATH"
+
+# export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+# export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
+
+# export PATH="/usr/local/opt/php@8.0/bin:$PATH"
+# export PATH="/usr/local/opt/php@8.0/sbin:$PATH"
+
