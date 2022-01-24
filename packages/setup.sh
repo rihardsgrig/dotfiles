@@ -52,14 +52,13 @@ versions=(php@7.4 php@8.0 php@8.1)
 brew install ${versions[@]}
 success "PHP install finished."
 
-# https://gist.github.com/rhukster/f4c04f1bf59e0b74e335ee5d186a98e2/
+# https://gist.github.com/Synchro/58dc96a30527136478cde2dfcc13557b
 info "Installing PHP switch script..."
 
 SCRIPT_LOC="$HOME/.dotfiles/bin"
 SCRIPT_NAME="sphp"
 SCRIPT_PATH="${SCRIPT_LOC}/${SCRIPT_NAME}"
-SCRIPT_PATH_TMP="$SCRIPT_PATH.bck"
-SCRIPT_URL="https://gist.githubusercontent.com/rhukster/f4c04f1bf59e0b74e335ee5d186a98e2/raw"
+SCRIPT_URL="https://gist.githubusercontent.com/Synchro/58dc96a30527136478cde2dfcc13557b/raw/30e7846f2d68ca3925c3adf72d191e3d6ac934e4/sphp"
 #sphp 7.4 sphp 8.0 sphp 8.1
 
 
@@ -71,12 +70,8 @@ fi
 # download sphp
 substep_info "Fetching script..."
 mkdir -p $SCRIPT_LOC
-curl -sL $SCRIPT_URL > $SCRIPT_PATH_TMP && substep_info "Saved to ${SCRIPT_PATH_TMP}."
-
-substep_info "Disabling apache in the script..."
-sed 's/apache_change=1/apache_change=0/gi' $SCRIPT_PATH_TMP > $SCRIPT_PATH
+curl -sL $SCRIPT_URL > $SCRIPT_PATH && substep_info "Saved to ${SCRIPT_PATH}."
 chmod +x $SCRIPT_PATH
-rm -rf $SCRIPT_PATH_TMP
 
 success "sphp is set up."
 
