@@ -57,8 +57,8 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # Set Help Viewer windows to non-floating mode
 defaults write com.apple.helpviewer DevMode -bool true
 
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+# Restart automatically if the computer freezes | TODO investigate why fails on M1
+#sudo systemsetup -setrestartfreeze on
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true

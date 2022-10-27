@@ -41,7 +41,7 @@ alias dwnl="cd $HOME/Downloads"
 alias dskt="cd $HOME/Desktop"
 alias dcmnt="cd $HOME/Documents"
 alias ls="ls -F"
-alias ll="/usr/local/opt/coreutils/libexec/gnubin/ls -ahlF --color --group-directories-first"
+alias ll="$(brew --prefix coreutils)/libexec/gnubin/ls -ahlF --color --group-directories-first"
 # List all files colorized in long format
 alias l="ls -lF --color"
 # List all files colorized in long format, including dot files
