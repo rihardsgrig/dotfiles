@@ -191,6 +191,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # the Dock to launch apps.
 #defaults write com.apple.dock persistent-apps -array
 
+#defaults delete com.apple.dock persistent-apps
+
 #defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Postman.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
@@ -274,4 +276,5 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 
+killall Dock
 success "Finished setting macOS defaults. Note that some of these changes require a logout/restart to take effect."
