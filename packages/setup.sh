@@ -48,7 +48,7 @@ rm -f -r /Library/Caches/Homebrew/* > /dev/null 2>&1
 success "Clean up finished."
 
 info "Installing PHP..."
-versions=(php@7.4 php@8.0 php@8.1)
+versions=(php@7.4 php@8.0 php@8.1 php@8.1)
 brew install ${versions[@]}
 success "PHP install finished."
 
@@ -58,7 +58,7 @@ info "Installing PHP switch script..."
 SCRIPT_LOC="$HOME/.dotfiles/bin"
 SCRIPT_NAME="sphp"
 SCRIPT_PATH="${SCRIPT_LOC}/${SCRIPT_NAME}"
-SCRIPT_URL="https://gist.githubusercontent.com/Synchro/58dc96a30527136478cde2dfcc13557b/raw/30e7846f2d68ca3925c3adf72d191e3d6ac934e4/sphp"
+SCRIPT_URL="https://gist.githubusercontent.com/rihardsgrig/842cabe0b9109257f064845cc1687a97/raw/244027dbb4ab2661b6d13abce8f8e2dbf3759463/sphp"
 #sphp 7.4 sphp 8.0 sphp 8.1
 
 
